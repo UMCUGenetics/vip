@@ -20,6 +20,8 @@
 !/resources/vep/plugins
 !/resources/*.chain
 !/resources/*.chain.gz
+!/resources/cakut.txt
+!/resources/mendoliome.txt
 
 # test
 /test/output
