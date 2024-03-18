@@ -640,16 +640,10 @@
     },
     "files": {
         "cakut": {
-            "path": "./resources/cakut.txt"
+            "path": "/hpc/dlab_nefrogen/projects/vip/vip/resources/cakut.txt"
         },
         "mendoliome": {
-            "path": "./resources/mendoliome.txt"
-        },
-        "coding": {
-            "path": "./resources/coding.txt"
-        },
-        "noncoding": {
-            "path": "./resources/non_coding.txt"
+            "path": "/hpc/dlab_nefrogen/projects/vip/vip/resources/mendoliome.txt"
         }
     },
     "labels": {
