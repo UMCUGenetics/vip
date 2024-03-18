@@ -58,9 +58,10 @@
         },
         "cakut_coding": {
             "type": "BOOL_MULTI",
+            "description": "Coding variants in known CAKUT genes.",
             "fields": [
-                "INFO/CSQ/Gene",
-                "INFO/CSQ/BIOTYPE"
+                "INFO/CSQ/SYMBOL",
+                "INFO/CSQ/Consequence"
             ],
             "outcomeDefault": {
                 "nextNode": "cakut_noncoding"
@@ -69,15 +70,39 @@
                 "operator": "AND",
                 "queries": [
                     {
-                        "field": "INFO/CSQ/Gene",
+                        "field": "INFO/CSQ/SYMBOL",
                         "operator": "in",
                         "value": "file:cakut"
                     },
                     {
-                        "field": "INFO/CSQ/BIOTYPE",
-                        "operator": "in",
-                        "value": "file:coding"
-                    }
+                        "field": "INFO/CSQ/Consequence",
+                        "operator": "contains_any",
+                        "value": [
+                            "transcript_ablation",
+                            "splice_acceptor_variant",
+                            "splice_donor_variant",
+                            "stop_gained",
+                            "frameshift_variant",
+                            "stop_lost",
+                            "start_lost",
+                            "transcript_amplification",
+                            "feature_elongation",
+                            "feature_truncation",
+                            "inframe_insertion",
+                            "inframe_deletion",
+                            "missense_variant",
+                            "protein_altering_variant",
+                            "splice_donor_5th_base_variant",
+                            "splice_region_variant",
+                            "splice_donor_region_variant",
+                            "splice_polypyrimidine_tract_variant",
+                            "incomplete_terminal_codon_variant",
+                            "start_retained_variant",
+                            "stop_retained_variant",
+                            "synonymous_variant",
+                            "coding_sequence_variant"
+                        ]
+                      }
                 ],
                 "outcomeTrue": {
                     "label": "cakut_coding",
@@ -87,9 +112,10 @@
         },
         "cakut_noncoding": {
             "type": "BOOL_MULTI",
+            "description": "Non coding variants in known CAKUT genes.",
             "fields": [
-                "INFO/CSQ/Gene",
-                "INFO/CSQ/BIOTYPE"
+                "INFO/CSQ/SYMBOL",
+                "INFO/CSQ/Consequence"
             ],
             "outcomeDefault": {
                 "nextNode": "mendoliome_coding"
@@ -98,15 +124,34 @@
                 "operator": "AND",
                 "queries": [
                     {
-                        "field": "INFO/CSQ/Gene",
+                        "field": "INFO/CSQ/SYMBOL",
                         "operator": "in",
                         "value": "file:cakut"
                     },
                     {
-                        "field": "INFO/CSQ/BIOTYPE",
-                        "operator": "in",
-                        "value": "file:noncoding"
-                    }
+                        "field": "INFO/CSQ/Consequence",
+                        "operator": "contains_any",
+                        "value": [
+                            "mature_miRNA_variant",
+                            "5_prime_UTR_variant",
+                            "3_prime_UTR_variant",
+                            "non_coding_transcript_exon_variant",
+                            "intron_variant",
+                            "NMD_transcript_variant",
+                            "non_coding_transcript_variant",
+                            "coding_transcript_variant",
+                            "upstream_gene_variant",
+                            "downstream_gene_variant",
+                            "TFBS_ablation",
+                            "TFBS_amplification",
+                            "TF_binding_site_variant",
+                            "regulatory_region_ablation",
+                            "regulatory_region_amplification",
+                            "regulatory_region_variant",
+                            "intergenic_variant",
+                            "sequence_variant"
+                        ]
+                      }
                 ],
                 "outcomeTrue": {
                     "label": "cakut_noncoding",
@@ -116,9 +161,10 @@
         },
         "mendoliome_coding": {
             "type": "BOOL_MULTI",
+            "description": "Coding variants in known MENDOLIOME genes.",
             "fields": [
-                "INFO/CSQ/Gene",
-                "INFO/CSQ/BIOTYPE"
+                "INFO/CSQ/SYMBOL",
+                "INFO/CSQ/Consequence"
             ],
             "outcomeDefault": {
                 "nextNode": "mendoliome_noncoding"
@@ -127,15 +173,39 @@
                 "operator": "AND",
                 "queries": [
                     {
-                        "field": "INFO/CSQ/Gene",
+                        "field": "INFO/CSQ/SYMBOL",
                         "operator": "in",
                         "value": "file:mendoliome"
                     },
                     {
-                        "field": "INFO/CSQ/BIOTYPE",
-                        "operator": "in",
-                        "value": "file:coding"
-                    }
+                        "field": "INFO/CSQ/Consequence",
+                        "operator": "contains_any",
+                        "value": [
+                            "transcript_ablation",
+                            "splice_acceptor_variant",
+                            "splice_donor_variant",
+                            "stop_gained",
+                            "frameshift_variant",
+                            "stop_lost",
+                            "start_lost",
+                            "transcript_amplification",
+                            "feature_elongation",
+                            "feature_truncation",
+                            "inframe_insertion",
+                            "inframe_deletion",
+                            "missense_variant",
+                            "protein_altering_variant",
+                            "splice_donor_5th_base_variant",
+                            "splice_region_variant",
+                            "splice_donor_region_variant",
+                            "splice_polypyrimidine_tract_variant",
+                            "incomplete_terminal_codon_variant",
+                            "start_retained_variant",
+                            "stop_retained_variant",
+                            "synonymous_variant",
+                            "coding_sequence_variant"
+                        ]
+                      }
                 ],
                 "outcomeTrue": {
                     "label": "mendoliome_coding",
@@ -145,9 +215,10 @@
         },
         "mendoliome_noncoding": {
             "type": "BOOL_MULTI",
+            "description": "Non cooding variants in known MENDOLIOME genes.",
             "fields": [
-                "INFO/CSQ/Gene",
-                "INFO/CSQ/BIOTYPE"
+                "INFO/CSQ/SYMBOL",
+                "INFO/CSQ/Consequence"
             ],
             "outcomeDefault": {
                 "nextNode": "filter"
@@ -156,15 +227,34 @@
                 "operator": "AND",
                 "queries": [
                     {
-                        "field": "INFO/CSQ/Gene",
+                        "field": "INFO/CSQ/SYMBOL",
                         "operator": "in",
                         "value": "file:mendoliome"
                     },
                     {
-                        "field": "INFO/CSQ/BIOTYPE",
-                        "operator": "in",
-                        "value": "file:noncoding"
-                    }
+                        "field": "INFO/CSQ/Consequence",
+                        "operator": "contains_any",
+                        "value": [
+                            "mature_miRNA_variant",
+                            "5_prime_UTR_variant",
+                            "3_prime_UTR_variant",
+                            "non_coding_transcript_exon_variant",
+                            "intron_variant",
+                            "NMD_transcript_variant",
+                            "non_coding_transcript_variant",
+                            "coding_transcript_variant",
+                            "upstream_gene_variant",
+                            "downstream_gene_variant",
+                            "TFBS_ablation",
+                            "TFBS_amplification",
+                            "TF_binding_site_variant",
+                            "regulatory_region_ablation",
+                            "regulatory_region_amplification",
+                            "regulatory_region_variant",
+                            "intergenic_variant",
+                            "sequence_variant"
+                        ]
+                      }
                 ],
                 "outcomeTrue": {
                     "label": "mendoliome_noncoding",
@@ -564,16 +654,16 @@
     },
     "labels": {
         "cakut_coding": {
-            "description": "Coding variants in known CAKUT genes, both defined in resource files."
+            "description": "Coding variants in known CAKUT genes."
         },
         "cakut_noncoding": {
-            "description": "Non cooding variants in known CAKUT genes, both defined in resource files."
+            "description": "Non coding variants in known CAKUT genes."
         },
         "mendoliome_coding": {
-            "description": "Coding variants in known MENDOLIOME genes, both defined in resource files."
+            "description": "Coding variants in known MENDOLIOME genes."
         },
         "mendoliome_noncoding": {
-            "description": "Non cooding variants in known MENDOLIOME genes, both defined in resource files."
+            "description": "Non cooding variants in known MENDOLIOME genes."
         }
     }
 }
