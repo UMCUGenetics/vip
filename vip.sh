@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Retrieve directory containing the collection of scripts (allows using other scripts with & without Slurm).
-if [[ -n "${SLURM_JOB_ID}" ]]; then SCRIPT_DIR=$(dirname "$(scontrol show job "${SLURM_JOB_ID}" | awk -F= '/Command=/{print $2}' | cut -d ' ' -f 1)"); else SCRIPT_DIR=$(dirname "$(realpath "$0")"); fi
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
 SCRIPT_NAME="$(basename "$0")"
 
 # SCRIPT_DIR is incorrect when vip.sh is submitted as a Slurm job that is submitted as part of another Slurm job
@@ -147,7 +147,7 @@ execute_workflow() {
   if [[ "${paramStub}" == "true" ]]; then
     args+=("-stub")
   fi
-  (cd "${paramOutput}" && APPTAINER_BIND="${APPTAINER_BIND-${envBind}}" APPTAINER_CACHEDIR="${envCacheDir}" NXF_VER="23.10.0" NXF_HOME="${envHome}" NXF_TEMP="${envTemp}" NXF_WORK="${envWork}" NXF_ENABLE_STRICT="${envStrict}" VIP_VERSION="${VIP_VERSION}" "${VIP_DIR}/nextflow" "${args[@]}")
+  (cd "${paramOutput}" && APPTAINER_BIND="${APPTAINER_BIND-${envBind}}" APPTAINER_CACHEDIR="${envCacheDir}" NXF_VER="23.10.0" NXF_HOME="${envHome}" NXF_TEMP="${envTemp}" NXF_WORK="${envWork}" NXF_ANSI_LOG="false" NXF_ENABLE_STRICT="${envStrict}" VIP_VERSION="${VIP_VERSION}" "${VIP_DIR}/nextflow" "${args[@]}")
 }
 
 main() {
